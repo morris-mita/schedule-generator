@@ -113,4 +113,66 @@ export const ActivityFormModal: React.FC<ActivityFormModalProps> = ({
                 }
                 className="w-full px-4 py-2 bg-[#252525] border border-[#2a2a2a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
               >
-                <option value="low">Low
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              Preferred Start Time (Optional)
+            </label>
+            <input
+              type="time"
+              value={formData.preferredStartTime || ''}
+              onChange={e =>
+                setFormData({ ...formData, preferredStartTime: e.target.value })
+              }
+              className="w-full px-4 py-2 bg-[#252525] border border-[#2a2a2a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1]"
+            />
+          </div>
+
+          <div className="flex items-center gap-6">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.isFlexible}
+                onChange={e => setFormData({ ...formData, isFlexible: e.target.checked })}
+                className="w-4 h-4 rounded bg-[#252525] border-[#2a2a2a] text-[#6366f1] focus:ring-2 focus:ring-[#6366f1]"
+              />
+              <span className="text-sm">Flexible Time</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.isRecurring}
+                onChange={e => setFormData({ ...formData, isRecurring: e.target.checked })}
+                className="w-4 h-4 rounded bg-[#252525] border-[#2a2a2a] text-[#6366f1] focus:ring-2 focus:ring-[#6366f1]"
+              />
+              <span className="text-sm">Recurring</span>
+            </label>
+          </div>
+
+          <div className="flex gap-3 pt-4">
+            <button
+              type="submit"
+              className="flex-1 px-4 py-2 bg-[#6366f1] hover:bg-[#5558e3] rounded-lg transition-colors font-medium"
+            >
+              {activity ? 'Update Activity' : 'Add Activity'}
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 bg-[#252525] hover:bg-[#2a2a2a] rounded-lg transition-colors"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
